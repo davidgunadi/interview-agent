@@ -52,7 +52,7 @@ Run the same skill, this time with the candidate name. Claude reads the JD and C
 Run the review skill with the Fireflies recording name. Claude pulls the transcript and fills in every answer field and outcome checkbox in `questions.md`. Requires the Fireflies connector to be authorized.
 
 ```
-/review-fireflies [role-name] [candidate-name] [recording-name]
+/review-interview [role-name] [candidate-name] [recording-name]
 ```
 
 **5. Generate the hire summary**
@@ -80,4 +80,4 @@ Claude reads the completed `questions.md` and produces `summary.md` in the candi
 - Folder names: `kebab-case`
 - `_jd.md` and `_questions.md` are prefixed with `_` to distinguish role-level files from candidate folders
 - Never write candidate-specific content into `_questions.md` — always work in the candidate's own `questions.md`
-- Fireflies integration: specify the recording by date or title when running `/review-fireflies`; requires the Fireflies connector to be authorized
+- Fireflies integration: specify the recording by date or title when running `/review-interview`; requires the Fireflies connector to be authorized

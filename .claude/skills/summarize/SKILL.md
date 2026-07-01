@@ -20,7 +20,7 @@ with a hire rating (1–10), YES/NO decision, executive summary, and evidence-ba
 - Extract role name and candidate name from the skill arguments
 - If either is missing, ask the user to provide them before continuing
 - Check that `roles/[role-name]/[candidate-name]/questions.md` exists — stop and tell the
-  user to run `/review-fireflies` first if it is missing or empty
+  user to run `/review-interview` first if it is missing or empty
 
 ---
 

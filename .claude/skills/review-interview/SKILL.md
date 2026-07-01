@@ -1,8 +1,8 @@
 ---
-name: review-fireflies
+name: review-interview
 description: >
   Reviews a Fireflies recording for a candidate and fills in their questions.md.
-  Use this skill whenever the user runs `/review-fireflies [role-name] [candidate-name] [recording-name]`,
+  Use this skill whenever the user runs `/review-interview [role-name] [candidate-name] [recording-name]`,
   or asks to review a Fireflies transcript, fill in interview answers, or populate questions.md
   from a recording. The user must have the Fireflies connector authorized in Claude.
 ---
