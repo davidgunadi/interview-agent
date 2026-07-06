@@ -1,6 +1,6 @@
 ---
 name: question-generator
-description: Use after a candidate's `cv.md` or `cv.pdf` is added. Reads the role's `_jd.md` and the candidate's CV to generate a tailored `questions.md`.
+description: Use after a candidate's `cv.md` or `cv.pdf` is added. Reads the role's `_jd.md` and the candidate's CV to generate a tailored `questions.md`, carrying over the Technical Interview and Behavioral Interview sections from the role's `_questions.md`.
 model: sonnet
 tools: Read, Write
 ---
@@ -35,11 +35,14 @@ Save to `roles/[role-name]/[candidate-name]/questions.md` using the structure be
 
 **Date:** [leave blank]
 **Interviewer:** Dave
-**Overall Recommendation:** [ ] Strong Hire  [ ] Hire  [ ] No Hire  [ ] Strong No Hire
+**Technical Recommendation:** [ ] Strong Hire  [ ] Hire  [ ] No Hire  [ ] Strong No Hire  [ ] Not Assessed
+**Behavioral Recommendation:** [ ] Strong Hire  [ ] Hire  [ ] No Hire  [ ] Strong No Hire  [ ] Not Assessed
 
 ---
 
-## 1. Technical Rubric
+## 1. Technical Interview
+
+### 1.1 Technical Rubric
 
 Score each dimension 1–5 after the interview. Pull evidence from answers.
 
@@ -55,7 +58,7 @@ Score each dimension 1–5 after the interview. Pull evidence from answers.
 
 ---
 
-## 2. Green & Red Flag Questions
+### 1.2 Green & Red Flag Questions
 
 For each question, note the actual answer given, then mark the outcome.
 
@@ -80,11 +83,36 @@ For each question, note the actual answer given, then mark the outcome.
 
 ---
 
-## 3. Soft Skill Questions
+## 2. Behavioral Interview
 
-Probe discipline, motivation, initiative, and grit. All questions must be framed to elicit a STAR response (Situation → Task → Action → Result).
+Not a technical assessment — this section probes a role-specific selection of traits drawn from `roles/_behavioral_question_bank.md` (the exact set — e.g. ownership, diligence, adaptability, collaboration, coachability — varies by role and is fixed in the role's `_questions.md`). Evidence for any trait can surface in response to any question below (or even during the Technical Interview) — the rubric is scored from the totality of the transcript, not one-to-one against the question that "belongs" to it.
 
-### S1: [Question text — phrased as "Tell me about a time when…" or "Walk me through…"]
+### 2.1 Behavioral Rubric
+
+| Trait | Assessed Outcome | Evidence / Notes |
+|-------|-------------------|-------------------|
+| [Trait 1 from _questions.md] | [ ] Green  [ ] Amber  [ ] Red | |
+| [Trait 2 from _questions.md] | [ ] Green  [ ] Amber  [ ] Red | |
+| ... | | |
+
+**Anchors — carried over verbatim from `_questions.md`, do not redesign:**
+
+**[Trait name]**
+- Green — [copied verbatim from `_questions.md`]
+- Amber — [copied verbatim from `_questions.md`]
+- Red — [copied verbatim from `_questions.md`]
+
+[Repeat anchor block for each trait carried over from `_questions.md`]
+
+---
+
+### 2.2 Behavioral Questions (STAR)
+
+All questions must be phrased to elicit a STAR response (Situation → Task → Action → Result).
+
+### B1: [Question text — phrased as "Tell me about a time when…" or "Walk me through…"]
+
+**Primary trait probed:** [trait name, from the set carried over from `_questions.md`]
 
 **What to listen for:**
 - [Signal]
@@ -98,11 +126,15 @@ Probe discipline, motivation, initiative, and grit. All questions must be framed
 | **Action** | > [fill post-interview] |
 | **Result** | > [fill post-interview] |
 
-**Assessment:** [ ] Strong  [ ] Adequate  [ ] Weak
+---
+
+[Repeat — one question per trait carried over from `_questions.md` (5–6 total), tailored to the candidate's background]
 
 ---
 
-[Repeat for 3–4 soft skill questions]
+## 3. Additional Information
+
+> [fill during review — anything the candidate raises that doesn't fit a predefined question in Section 1 or 2, tagged [Technical] or [Behavioral]. Leave blank at generation time.]
 
 ---
 
@@ -132,8 +164,13 @@ Probe discipline, motivation, initiative, and grit. All questions must be framed
 ## Instructions
 
 1. Read `_jd.md` to extract: must-have skills, nice-to-haves, red flags, and the role's core purpose.
-2. Read the candidate's CV — check for `cv.pdf` first, then `cv.md`; use whichever exists. Identify: claimed strengths, gaps vs JD, anything that needs probing (e.g. suspiciously vague project descriptions, gaps in timeline, mismatch between seniority claimed and scope of work described).
-3. Generate the Technical Rubric dimensions directly from the JD must-haves. Weight = High for must-haves, Med for nice-to-haves.
-4. Write 4–6 Green/Red Flag questions. At least 2 must be CV-specific (probe something from their actual background). The rest are role-standard.
-5. Write 3–4 Soft Skill questions. All must be phrased to elicit a STAR response ("Tell me about a time…" / "Walk me through a moment when…"). Tailor the situation framing to the candidate's background (e.g. if they've led a team, ask about a time they had to push through a low-signal problem with no manager guidance). The STAR table fields in the output are left blank for the reviewer to fill post-interview.
-6. Leave all answer fields blank — they are filled post-interview by the Interview Reviewer agent.
+2. Read the role's `_questions.md` for the Technical Rubric shape, the Core Technical Questions, the Behavioral Rubric (2.1), and the Behavioral Questions (2.2) — these are your starting point, not the candidate's CV.
+3. Read the candidate's CV — check for `cv.pdf` first, then `cv.md`; use whichever exists. Identify: claimed strengths, gaps vs JD, anything that needs probing (e.g. suspiciously vague project descriptions, gaps in timeline, mismatch between seniority claimed and scope of work described).
+4. Generate the Technical Rubric (1.1) dimensions directly from the JD must-haves. Weight = High for must-haves, Med for nice-to-haves.
+5. Write 4–6 Green/Red Flag questions (1.2). At least 2 must be CV-specific (probe something from their actual background). The rest are role-standard, carried from `_questions.md`.
+6. Carry the Behavioral Rubric (2.1) over **exactly as written** in `_questions.md` — trait names, Green/Amber/Red anchor text, and table shape are fixed and approved. Never reword, reorder, add, or drop traits, and never tailor this rubric to the candidate.
+7. Write one Behavioral (STAR) question (2.2) per trait carried over from `_questions.md` (5–6 total), phrased as "Tell me about a time…" / "Walk me through a moment when…". Tailor the situational framing to the candidate's background (e.g. if they've led a team, ask about a time they had to push through a low-signal problem with no manager guidance) — but do not touch the rubric anchors themselves. The STAR table fields in the output are left blank for the reviewer to fill post-interview.
+8. If a CV-specific probe surfaces a behavioral rather than technical concern (e.g. an unexplained short tenure, a claimed leadership role that seems inflated), fold it into one of the 2.2 STAR questions rather than Section 1.
+9. Leave Section 3 (Additional Information) blank — filled post-interview by the Interview Reviewer agent.
+10. Leave both **Technical Recommendation** and **Behavioral Recommendation** checkboxes unmarked.
+11. Leave all other answer fields blank — they are filled post-interview by the Interview Reviewer agent.
