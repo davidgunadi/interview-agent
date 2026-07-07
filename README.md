@@ -6,6 +6,9 @@ A Claude-powered hiring system for managing end-to-end interviews at McEasy — 
 
 ## Prerequisites
 
+Must Have:
+
+- [Claude Desktop](https://claude.com/download)
 - [Git](https://git-scm.com/install/)
 - [Python](https://www.python.org/downloads/)
 - [Node](https://nodejs.org/en/download)
@@ -19,12 +22,12 @@ Optional:
 
 Four Claude agents handle distinct phases of the hiring pipeline:
 
-| Phase | Agent | What it does |
-|-------|-------|--------------|
-| Role setup | `.claude/agents/role-setup.md` | Reads the JD, selects 5–6 behavioral traits from `roles/_behavioral_question_bank.md`, and generates the role's master `_questions.md` template |
-| Pre-interview | `.claude/agents/question-generator.md` | Reads JD + CV, generates a tailored `questions.md` with technical rubric, green/red flag questions, and soft skill probes |
-| Post-interview | `.claude/agents/fireflies-reviewer.md` | Pulls the Fireflies transcript and fills in every answer field and outcome checkbox in `questions.md` |
-| Decision | `.claude/agents/create-summary.md` | Reads the completed `questions.md` and produces `summary.md` with a hire rating (1–10), YES/NO decision, and pros/cons |
+| Phase          | Agent                                  | What it does                                                                                                                                    |
+| -------------- | -------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
+| Role setup     | `.claude/agents/role-setup.md`         | Reads the JD, selects 5–6 behavioral traits from `roles/_behavioral_question_bank.md`, and generates the role's master `_questions.md` template |
+| Pre-interview  | `.claude/agents/question-generator.md` | Reads JD + CV, generates a tailored `questions.md` with technical rubric, green/red flag questions, and soft skill probes                       |
+| Post-interview | `.claude/agents/fireflies-reviewer.md` | Pulls the Fireflies transcript and fills in every answer field and outcome checkbox in `questions.md`                                           |
+| Decision       | `.claude/agents/create-summary.md`     | Reads the completed `questions.md` and produces `summary.md` with a hire rating (1–10), YES/NO decision, and pros/cons                          |
 
 ## Folder structure
 
@@ -84,13 +87,13 @@ Claude reads the completed `questions.md` and produces `summary.md` in the candi
 
 ## Rating scale
 
-| Rating | Decision | Meaning |
-|--------|----------|---------|
-| 9–10 | YES | Exceptional — raise the bar hire |
-| 7–8 | YES | Solid — meets the bar, risks manageable |
-| 5–6 | NO | Mixed — meaningful gaps |
-| 3–4 | NO | Below bar on must-haves |
-| 1–2 | NO | Clear mismatch |
+| Rating | Decision | Meaning                                 |
+| ------ | -------- | --------------------------------------- |
+| 9–10   | YES      | Exceptional — raise the bar hire        |
+| 7–8    | YES      | Solid — meets the bar, risks manageable |
+| 5–6    | NO       | Mixed — meaningful gaps                 |
+| 3–4    | NO       | Below bar on must-haves                 |
+| 1–2    | NO       | Clear mismatch                          |
 
 **7+ = Hire. Below 7 = No Hire. No hedging.**
 
