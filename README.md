@@ -14,7 +14,7 @@ Must Have:
 - [Node](https://nodejs.org/en/download)
 - Claude Pro or Max account
 
-- Optional:
+Optional:
 
 - [GitHub Desktop](https://desktop.github.com/download/)
 - [VSCode](https://code.visualstudio.com/download)
