@@ -37,7 +37,7 @@ def inline(text: str) -> str:
     text = text.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
     text = re.sub(r"\*\*(.+?)\*\*", r"<b>\1</b>", text)
     text = re.sub(r"`(.+?)`", r"<font face='Courier'>\1</font>", text)
-    text = text.replace("[ ]", "☐").replace("[x]", "☑").replace("[X]", "☑")
+    text = re.sub(r"\[[xX]\]", "<b>[X]</b>", text)
     return text
 
 

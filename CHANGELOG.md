@@ -6,6 +6,11 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/); version
 
 Adding a new role, candidate, JD, or CV is not a functional change to the tool and is not logged here.
 
+## [2.0.2] - 2026-07-07
+
+### Fixed
+- `md_to_pdf.py` rendered both checked and unchecked checkboxes (`[x]` / `[ ]`) as identical solid black squares in exported PDFs, since the Unicode ballot-box glyphs (☐/☑) it substituted them with aren't supported by the base Helvetica font. Checkboxes now render as plain `[ ]` / bold `[X]` text instead, which is font-safe and visually distinguishable.
+
 ## [2.0.1] - 2026-07-06
 
 ### Changed
