@@ -54,5 +54,5 @@ This repo tracks its own version in [CHANGELOG.md](CHANGELOG.md) (Keep a Changel
 1. Add a role: create `roles/[role-name]/_jd.md`, then run `/setup [role-name]`
 2. Add a candidate: create `roles/[role-name]/[candidate-name]/cv.md`
 3. Generate tailored questions: run `/setup [candidate-name]` — Claude resolves the role automatically, asking you to pick if the candidate name exists under more than one role
-4. Post-interview: run `/review-interview [candidate-name] [recording-name]` — requires Fireflies connector; also exports `questions.pdf`
+4. Post-interview: run `/review-interview [candidate-name]` (or `/review-interview [candidate-name] [recording-name]` to target a specific recording) — requires Fireflies connector; also exports `questions.pdf`
 5. Generate summary: run `/summarize [candidate-name]` — also exports `summary.pdf`

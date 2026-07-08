@@ -6,6 +6,11 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/); version
 
 Adding a new role, candidate, JD, or CV is not a functional change to the tool and is not logged here.
 
+## [2.1.2] - 2026-07-08
+
+### Changed
+- `review-interview` skill: recording name is now optional. If omitted, the skill searches Fireflies using the candidate name as the query and asks for confirmation if multiple recordings match. Providing the recording name explicitly still works as before.
+
 ## [2.1.1] - 2026-07-07
 
 ### Fixed

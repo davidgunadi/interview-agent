@@ -2,9 +2,11 @@
 name: review-interview
 description: >
   Reviews a Fireflies recording for a candidate and fills in their questions.md.
-  Use this skill whenever the user runs `/review-interview [candidate-name] [recording-name]`,
+  Use this skill whenever the user runs `/review-interview [candidate-name]` or
+  `/review-interview [candidate-name] [recording-name]`,
   or asks to review a Fireflies transcript, fill in interview answers, or populate questions.md
-  from a recording. The user must have the Fireflies connector authorized in Claude.
+  from a recording. The recording name is optional — if omitted, the skill searches Fireflies
+  for recordings containing the candidate name. The user must have the Fireflies connector authorized in Claude.
 ---
 
 # Review Fireflies Transcript
@@ -21,7 +23,8 @@ tell the user to connect it via their claude.ai connector settings before procee
 
 ## Step 1: Identify the candidate
 
-- Extract candidate name and recording name from the skill arguments — if either is missing, ask the user to provide it
+- Extract candidate name from the skill arguments — if the candidate name is missing, ask the user to provide it
+- Recording name is **optional** — extract it if provided; if absent, proceed without it (you will search by candidate name in Step 2)
 - Search all `roles/*/[candidate-name]/` folders for a match:
   - If found under exactly one role, use that role
   - If found under multiple roles, list the matching roles and ask the user which one they mean
@@ -33,7 +36,8 @@ tell the user to connect it via their claude.ai connector settings before procee
 
 ## Step 2: Pull the Fireflies transcript
 
-- Use the Fireflies connector to search for the recording matching the provided name/date/title
+- If a recording name was provided: search Fireflies for a recording matching that name/date/title
+- If no recording name was provided: search Fireflies using the candidate name as the query
 - If multiple matches are found, list them and ask the user to confirm which one
 - Retrieve the full transcript
 
